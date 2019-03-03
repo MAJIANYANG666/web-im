@@ -1,5 +1,7 @@
 import {REG_STATE_CHANGE} from '../actions/actiontypes';
 
+
+// 初步看这个
 export default function signReducer(state = {
     regState: 0, //1 注册开始， 2 注册成功， 3 注册失败
 }, action) {

@@ -1,3 +1,4 @@
+// 初步看这个
 // export function login(state) {
 //     return {
 //         type: 'LOGIN_START',

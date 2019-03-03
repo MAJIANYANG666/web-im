@@ -10,6 +10,13 @@ import tooltip from '@component/common/tooltip';
 import './index.css';
 
 import {Link} from 'react-router';
+
+/* 由于
+const _reducers = {
+    sign: sign
+};
+都用this.props使用
+*/
 @connect(
     state => ({
         regState: state.sign.regState
@@ -19,6 +26,9 @@ import {Link} from 'react-router';
     }
   )
 export default class SignUp extends Component {
+    // state = {
+    //   showLoading: false
+    // }
 
     keyDown = () => {
 
@@ -42,9 +52,24 @@ export default class SignUp extends Component {
             nickname: nickname,
             appKey: WebIM.config.appkey,
             apiUrl: WebIM.config.apiURL
-           
-        };
+          //  success:()=> {
+            // this.setState({
+                //     showLoading: false
+                // });
 
+          // }
+        //    error:()=> {
+          // console.err(err)
+          // 出现提示
+              // this.setState({
+                //     showLoading: false
+                // });
+        // };
+        };
+        // 这里注意理解
+        // let {loginWithAsync} = this.props;
+        //     loginWithAsync(2);
+        // === store.dispatch(loginWithAsync(2))
         this.props.reg(options).then(() => {
             //跳转
         }).catch(() => {

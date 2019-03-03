@@ -1,3 +1,15 @@
+// export function regStatus(state) {
+//     return {
+//         type: REG_START_CHANGE,
+//         payload: {
+//             state: state
+//         }
+//     }
+// }
+
+// export const regStatus = createAction(REG_START_CHANGE,'state','dsc','asd')
+// regStatus(3,2,1)
+
 export function createAction(type, ...actionArgs) {
     return (...args) => {
         let action = {type: type, payload: {}};

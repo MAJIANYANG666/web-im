@@ -41,19 +41,18 @@ function show(props) {
     d = document.createElement('div');
     document.body.appendChild(d);
     ReactDOM.render(<Tooltip {...props}/>, d);
-    // if (timer) {
-    //     clearTimeout(timer);
-    // }
-    // timer = setTimeout(() => {
-    //     close();
-    // }, props.time || 3000)
+    if (timer) {
+        clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+        close();
+    }, props.time || 3000)
 }
 function close() {
     if (d) {
-        //ReactDOM.unmountComponentAtNode(d); 要添加
-
+        ReactDOM.unmountComponentAtNode(d); //要添加
         d.parentNode.removeChild(d);
-        // d = null;
+        d = null;
     }
 }
 export default {
