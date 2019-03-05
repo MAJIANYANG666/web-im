@@ -35,3 +35,18 @@ export function reg(options) {
         });
     }
 }
+export function login(options) {
+  return (dispatch, getState) => {
+      return new Promise((resolve, reject) => {
+        
+          options.success = function(token) {
+              resolve(token);
+
+          }
+          options.error = function(token) {
+              reject(token);
+          };
+          sdk.conn.open(options);
+      });
+  }
+}

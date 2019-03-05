@@ -10,13 +10,14 @@ import tooltip from '@component/common/tooltip';
 import './index.css';
 
 import {Link} from 'react-router';
-
+import safeRender from '@decorator/saferender.js';
 /* 由于
 const _reducers = {
     sign: sign
 };
 都用this.props使用
 */
+
 @connect(
     state => ({
         regState: state.sign.regState
@@ -25,11 +26,22 @@ const _reducers = {
         reg
     }
   )
+
+  @safeRender({
+    active: true,
+    errorHandler: function (e) {
+      alert(e.displayName +　"----" + e.method)
+    }
+  })
 export default class SignUp extends Component {
     // state = {
     //   showLoading: false
     // }
-
+    componentWillMount() {
+      //
+      // throw new Error('');
+      
+  }
     keyDown = () => {
 
     }
