@@ -43,8 +43,8 @@ export function login(options) {
               resolve(token);
 
           }
-          options.error = function(token) {
-              reject(token);
+          options.error = function(e) {
+              reject(e);
           };
           sdk.conn.open(options);
       });

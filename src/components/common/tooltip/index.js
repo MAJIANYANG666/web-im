@@ -9,7 +9,6 @@ class Tooltip extends Component{
         type: 'success', //默认是成功的样式
         content: '' //显示的内容
     }
-
     state = {
 
     }

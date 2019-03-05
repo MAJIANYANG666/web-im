@@ -1,3 +1,41 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 1072090 */
+  src: url('//at.alicdn.com/t/font_1072090_lqrbze6trmk.eot');
+  src: url('//at.alicdn.com/t/font_1072090_lqrbze6trmk.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1072090_lqrbze6trmk.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1072090_lqrbze6trmk.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1072090_lqrbze6trmk.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1072090_lqrbze6trmk.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-setting:before {
+  content: "\e608";
+}
+
+.icon-user:before {
+  content: "\e6a9";
+}
+
+.icon-log-out-o:before {
+  content: "\e770";
+}
+
+.icon-hc-im-an-artist-and-:before {
+  content: "\e600";
+}
+
+.icon-chat:before {
+  content: "\e6e3";
+}
+
 #root{
       background: #EEE;
       position: absolute;

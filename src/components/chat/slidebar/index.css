@@ -1,0 +1,20 @@
+@import '../../common/css/variable';
+.slidebar{
+    width: 80px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color:$primary;
+    color:#FFF;
+    z-index:100;
+
+}
+.iconfont{
+  font-size:$font-size-xlarge;
+}
+.app-item{
+  text-align: center;
+}
+
+

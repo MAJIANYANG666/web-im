@@ -50,6 +50,10 @@ export default class Login extends Component {
         history.push('/chat/single/123')
       }).catch(()=>{
         //出现tooltip
+        tooltip.show({
+          type: 'error',
+          content: '登录失败'
+        })
       })
      
   }
