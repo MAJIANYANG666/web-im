@@ -11,6 +11,7 @@ import './index.css';
 
 import {Link} from 'react-router';
 import safeRender from '@decorator/saferender.js';
+import history from '@history/history.js'
 /* 由于
 const _reducers = {
     sign: sign
@@ -84,6 +85,7 @@ export default class SignUp extends Component {
         // === store.dispatch(loginWithAsync(2))
         this.props.reg(options).then(() => {
             //跳转
+            history.push('/login');
         }).catch(() => {
             //显示tooltip
             tooltip.show({
