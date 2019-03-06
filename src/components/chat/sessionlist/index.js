@@ -10,14 +10,13 @@ export default class sessionList extends Component {
       ],
       showPanel: false,
     }
-    
   }
   componentWillMount() {
     sdk.conn.listen({
       onOpened: ( message ) => {          //连接成功回调
         this.getRosters();
       },
-      onRoster: function ( message ) {
+      onRoster: ( message )=> {
         this.getRosters();
       },
       onPresence: (message) => {
@@ -30,10 +29,11 @@ export default class sessionList extends Component {
      //对方收到请求加为好友
   if (message.type === 'subscribe') {
     // 显示同意/拒绝面板
+    this.subscribeMessage = message;
     this.setState({
       showPanel: true,
-    })
-    this.subscribeMessage = message;
+  });
+    
   }
   }
   agree = () => {
@@ -60,11 +60,11 @@ export default class sessionList extends Component {
       showPanel: false
   });
   }
-  getRosters = () => [
+  getRosters = () => {
     sdk.conn.getRoster({
       success: (rosters) => {
         rosters = rosters.filter((roster)=>{
-          return roster.subscription === 'to'|| roster.subscription === 'to' 
+          return roster.subscription === 'both'|| roster.subscription === 'to' 
         })
 
         this.setState({
@@ -75,7 +75,7 @@ export default class sessionList extends Component {
         alert(e)
       }
     })
-  ]
+  }
   render() {
     let {friendList, showPanel} = this.state
     let message = this.subscribeMessage;
