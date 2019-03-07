@@ -1973,6 +1973,10 @@ decamelize@^1.0.0, decamelize@^1.1.1, decamelize@^1.1.2:
   version "1.2.0"
   resolved "http://registry.npm.taobao.org/decamelize/download/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
 
+decimal.js@^4.0.2:
+  version "4.0.4"
+  resolved "http://registry.npm.taobao.org/decimal.js/download/decimal.js-4.0.4.tgz#af3249465e133988c30750f77eaaf44505caa5e3"
+
 decode-uri-component@^0.2.0:
   version "0.2.0"
   resolved "http://registry.npm.taobao.org/decode-uri-component/download/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
@@ -2917,6 +2921,10 @@ form-data@~2.3.2:
 forwarded@~0.1.2:
   version "0.1.2"
   resolved "http://registry.npm.taobao.org/forwarded/download/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
+
+fraction.js@^3.0.0:
+  version "3.3.1"
+  resolved "http://registry.npm.taobao.org/fraction.js/download/fraction.js-3.3.1.tgz#5d6a31ff07707294f204ccbb6b53791607771083"
 
 fragment-cache@^0.2.1:
   version "0.2.1"
@@ -4433,6 +4441,15 @@ math-random@^1.0.1:
   version "1.0.4"
   resolved "http://registry.npm.taobao.org/math-random/download/math-random-1.0.4.tgz#5dd6943c938548267016d4e34f057583080c514c"
 
+mathjs@^2.6.0:
+  version "2.7.0"
+  resolved "http://registry.npm.taobao.org/mathjs/download/mathjs-2.7.0.tgz#cfc301fd1c59944a5830b3989093a4179cb9d8df"
+  dependencies:
+    decimal.js "^4.0.2"
+    fraction.js "^3.0.0"
+    tiny-emitter "^1.0.0"
+    typed-function "^0.10.3"
+
 md5.js@^1.3.4:
   version "1.3.5"
   resolved "http://registry.npm.taobao.org/md5.js/download/md5.js-1.3.5.tgz#b5d07b8e3216e3e27cd728d72f70d1e6a342005f"
@@ -5215,6 +5232,12 @@ postcss-attribute-case-insensitive@^2.0.0:
     postcss "^6.0.0"
     postcss-selector-parser "^2.2.3"
 
+postcss-calc-function@^1.1.0:
+  version "1.1.0"
+  resolved "http://registry.npm.taobao.org/postcss-calc-function/download/postcss-calc-function-1.1.0.tgz#37a656a2a24c6d1fcb836a4886cbbafcdb2a4320"
+  dependencies:
+    mathjs "^2.6.0"
+
 postcss-calc@^5.2.0:
   version "5.3.1"
   resolved "http://registry.npm.taobao.org/postcss-calc/download/postcss-calc-5.3.1.tgz#77bae7ca928ad85716e2fda42f261bf7c1d65b5e"
@@ -5576,6 +5599,13 @@ postcss-modules-values@^1.1.0:
     icss-replace-symbols "^1.1.0"
     postcss "^6.0.1"
 
+postcss-nested@^2.1.2:
+  version "2.1.2"
+  resolved "http://registry.npm.taobao.org/postcss-nested/download/postcss-nested-2.1.2.tgz#04057281f9631fef684857fb0119bae04ede03c6"
+  dependencies:
+    postcss "^6.0.9"
+    postcss-selector-parser "^2.2.3"
+
 postcss-nesting@^4.0.1:
   version "4.2.1"
   resolved "http://registry.npm.taobao.org/postcss-nesting/download/postcss-nesting-4.2.1.tgz#0483bce338b3f0828ced90ff530b29b98b00300d"
@@ -5643,6 +5673,12 @@ postcss-replace-overflow-wrap@^2.0.0:
   resolved "http://registry.npm.taobao.org/postcss-replace-overflow-wrap/download/postcss-replace-overflow-wrap-2.0.0.tgz#794db6faa54f8db100854392a93af45768b4e25b"
   dependencies:
     postcss "^6.0.1"
+
+postcss-scss@^1.0.2:
+  version "1.0.6"
+  resolved "http://registry.npm.taobao.org/postcss-scss/download/postcss-scss-1.0.6.tgz#ab903f3bb20161bc177896462293a53d4bff5f7a"
+  dependencies:
+    postcss "^6.0.23"
 
 postcss-selector-matches@^3.0.0, postcss-selector-matches@^3.0.1:
   version "3.0.1"
@@ -5718,7 +5754,7 @@ postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0
     source-map "^0.5.6"
     supports-color "^3.2.3"
 
-postcss@^6.0, postcss@^6.0.0, postcss@^6.0.1, postcss@^6.0.11, postcss@^6.0.14, postcss@^6.0.17, postcss@^6.0.18, postcss@^6.0.2, postcss@^6.0.22, postcss@^6.0.5, postcss@^6.0.6, postcss@^6.0.9:
+postcss@^6.0, postcss@^6.0.0, postcss@^6.0.1, postcss@^6.0.11, postcss@^6.0.14, postcss@^6.0.17, postcss@^6.0.18, postcss@^6.0.2, postcss@^6.0.22, postcss@^6.0.23, postcss@^6.0.5, postcss@^6.0.6, postcss@^6.0.9:
   version "6.0.23"
   resolved "http://registry.npm.taobao.org/postcss/download/postcss-6.0.23.tgz#61c82cc328ac60e677645f979054eb98bc0e3324"
   dependencies:
@@ -6936,6 +6972,10 @@ timers-browserify@^2.0.4:
   dependencies:
     setimmediate "^1.0.4"
 
+tiny-emitter@^1.0.0:
+  version "1.2.0"
+  resolved "http://registry.npm.taobao.org/tiny-emitter/download/tiny-emitter-1.2.0.tgz#6dc845052cb08ebefc1874723b58f24a648c3b6f"
+
 tmp@^0.0.33:
   version "0.0.33"
   resolved "http://registry.npm.taobao.org/tmp/download/tmp-0.0.33.tgz#6d34335889768d21b2bcda0aa277ced3b1bfadf9"
@@ -7032,6 +7072,10 @@ type-is@~1.6.16:
   dependencies:
     media-typer "0.3.0"
     mime-types "~2.1.18"
+
+typed-function@^0.10.3:
+  version "0.10.7"
+  resolved "http://registry.npm.taobao.org/typed-function/download/typed-function-0.10.7.tgz#f702af7d77a64b61abf86799ff2d74266ebc4477"
 
 typedarray@^0.0.6:
   version "0.0.6"

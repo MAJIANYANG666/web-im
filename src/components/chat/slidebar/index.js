@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { getToken } from "@utils/token";
 import Icon from "@component/common/Icon";
-import Dialog from "@component/common/dialog";
+import Avator from '@component/common/avator';
+import {showDialog, closeDialog} from "@component/common/dialog";
 import './index.css'
 
 export default class SliderBar extends Component {
@@ -9,18 +10,32 @@ export default class SliderBar extends Component {
     showPanel: false
   }
   showAddRosterPanel = () => {
-    this.setState({
-      showPanel:true
+    showDialog({
+      content: 
+        <div className = "input-container">
+          <input type="text" ref={(ins)=>{this.nickname=ins}} placeholder="输入名字"/>
+        </div>,
+      
+      footer:
+        <div className="footer">
+          <button className="btn" onClick={this.addRoster}>确定</button>
+        </div>,
+      // onCLose = {1}
+      title:"添加好友"
     })
+    // this.setState({
+    //   showPanel:true
+    // })
   }
   addRoster = () => {
     sdk.conn.subscribe({
-      to: this.refs.nickname.value,
+      to: this.nickname.value,
       message: '加个好友呗!'   
   });
-    this.setState({
-      showPanel: false
-    })
+    closeDialog()
+    // this.setState({
+    //   showPanel: false
+    // })
   }
     render() {
         console.log(getToken());
@@ -30,10 +45,10 @@ export default class SliderBar extends Component {
         return (
             <div className="slidebar">
                 <div className="profile">
-                    <div className="app-item avator">
-                        <Icon type="user" />
+                    <div className="app-item">
+                        <Avator/>
                     </div>
-                    <div>{username}</div>
+                    <div className="name">{username}</div>
                 </div>
                 <div className="menus">
                     <div className="app-item chat">
@@ -48,7 +63,7 @@ export default class SliderBar extends Component {
                         <Icon type="setting" />
                     </div>
                 </div>
-                {showPanel ? <Dialog 
+                {/* {showPanel ? <Dialog 
                   content= {
                     <div className = "input-container">
                       <input type="text" ref="nickname" placeholder="输入名字"/>
@@ -62,7 +77,7 @@ export default class SliderBar extends Component {
                   // onCLose = {1}
                   title="添加好友">
 
-                </Dialog>: null}
+                </Dialog>: null} */}
             </div>
         );
     }

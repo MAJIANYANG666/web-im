@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import ReactDOM from 'react-dom';
 
 import './index.css';
-class Tooltip extends Component{
+ class Tooltip extends Component{
     static defaultProps = {
         time: 3000, // 3s后自动消失
         type: 'success', //默认是成功的样式

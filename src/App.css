@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'iconfont';  /* project id 1072090 */
-  src: url('//at.alicdn.com/t/font_1072090_lqrbze6trmk.eot');
-  src: url('//at.alicdn.com/t/font_1072090_lqrbze6trmk.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1072090_lqrbze6trmk.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1072090_lqrbze6trmk.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1072090_lqrbze6trmk.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1072090_lqrbze6trmk.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_1072090_2cuma3jwfob.eot');
+  src: url('//at.alicdn.com/t/font_1072090_2cuma3jwfob.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1072090_2cuma3jwfob.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1072090_2cuma3jwfob.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1072090_2cuma3jwfob.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1072090_2cuma3jwfob.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -34,6 +34,14 @@
 
 .icon-chat:before {
   content: "\e6e3";
+}
+
+.icon-closesstyle2:before {
+  content: "\e610";
+}
+
+.icon-add:before {
+  content: "\e634";
 }
 
 #root{
