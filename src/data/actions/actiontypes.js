@@ -21,3 +21,6 @@ export function createAction(type, ...actionArgs) {
 }
 
 export const REG_STATE_CHANGE = 'reg_state_change';
+
+export const SET_CURRENT_SESSION = 'set_current_session';
+

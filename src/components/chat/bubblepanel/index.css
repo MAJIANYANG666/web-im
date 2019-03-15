@@ -1,3 +1,33 @@
-.bubblePanel {
+/* .bubblePanel {
   margin-left: 320px;
+} */
+.ctn-bubblepanel{
+  margin-left: 320px;
+  .title{
+      height:60px;
+      border-bottom:1px solid #eee;
+  }
+
+  .ctn-msg-sender {
+      position: absolute;
+      bottom: 0;
+      height: 180px;
+      border-top: 1px solid #eee;
+      textarea {
+          width: 320px;
+          height: 170px;
+          border: none;
+          resize: none;
+          outline:none;
+          box-sizing: border-box;
+          padding:10px;
+
+      }
+      .button{
+          position: absolute;
+          right: 10px;
+          bottom: 0;
+          width: 80px;
+      }
+  }
 }

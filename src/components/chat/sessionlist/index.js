@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+import Avator from "@component/common/avator";
 import { showDialog, closeDialog } from "@component/common/dialog";
+import { Link } from "react-router";
 import "./index.css";
+import {connect} from 'react-redux';
+import {setCurrentSession} from '@data/actions/session';
 
 export default class sessionList extends Component {
     constructor(props) {
@@ -33,31 +37,30 @@ export default class sessionList extends Component {
             //     showPanel: true,
             // });
             this.showPresenceDialog();
-            
         }
     };
-    showPresenceDialog=()=> {
-      let message = this.subscribeMessage;
-      showDialog({
-        title: "好友申请",
-        content: (
-            <div>
-                <div>{message.from}邀请你加为好友</div>
-                <div>留言：{message.status}</div>
-            </div>
-        ),
-        footer: (
-            <div>
-                <button className="reject" onClick={this.reject}>
-                    拒绝
-                </button>
-                <button className="agree" onClick={this.agree}>
-                    同意
-                </button>
-            </div>
-        )
-    });
-    }
+    showPresenceDialog = () => {
+        let message = this.subscribeMessage;
+        showDialog({
+            title: "好友申请",
+            content: (
+                <div>
+                    <div>{message.from}邀请你加为好友</div>
+                    <div>留言：{message.status}</div>
+                </div>
+            ),
+            footer: (
+                <div>
+                    <button className="reject" onClick={this.reject}>
+                        拒绝
+                    </button>
+                    <button className="agree" onClick={this.agree}>
+                        同意
+                    </button>
+                </div>
+            )
+        });
+    };
     agree = () => {
         let message = this.subscribeMessage;
         sdk.conn.subscribed({
@@ -107,12 +110,14 @@ export default class sessionList extends Component {
     render() {
         let { friendList, showPanel } = this.state;
         let message = this.subscribeMessage;
+        let {chatId} = this.props
         return (
             <div className="sessionlist">
                 {friendList.length
                     ? friendList.map(friend => {
+                      let isSelected = friend.name ===chatId;
                           return (
-                              <SessionItem friend={friend} key={friend.name} />
+                              <SessionItem friend={friend} key={friend.name} isSelected = {isSelected}/>
                           );
                       })
                     : null}
@@ -146,9 +151,36 @@ export default class sessionList extends Component {
     }
 }
 
+@connect(
+  (state) => ({
+
+  }),
+  {
+    setCurrentSession
+  }
+)
+
 class SessionItem extends Component {
+  itemClick = () =>{
+    let {setCurrentSession,friend} = this.props;
+    setCurrentSession(friend)
+  }
+
     render() {
-        let { friend } = this.props;
-        return <div className="session-item">{friend.name}</div>;
+        let { friend, isSelected} = this.props;
+        console.log(111)
+        console.log(friend)
+        let url = `chat/single/${friend.name}`
+        return <div className={ isSelected ? "session-item-outer selected":"session-item-outer"}>
+        <Link to={url} className="session-item" onClick={this.itemClick}>
+          <div className="ctn-avator">
+            <Avator/>
+          </div>
+          <div className="session-inner">
+            <div className="name">{friend.name}</div>
+            <div className="msg-preview"></div>
+          </div>    
+        </Link>  
+        </div>;
     }
 }

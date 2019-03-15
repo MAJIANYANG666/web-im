@@ -47,7 +47,7 @@ export default class Login extends Component {
         //存在localStorage里面
         // btoa二进制祖父穿转base64 atob
         setToken(token)
-        history.push('/chat/single/123')
+        history.push('/chat')
       }).catch(()=>{
         //出现tooltip
         tooltip.show({
