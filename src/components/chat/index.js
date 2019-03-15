@@ -14,7 +14,7 @@ export default class Chat extends Component {
         <div>
           <SlideBar/>
           <SessionList chatType={params.chatType} chatId={params.chatId}/>
-          <BubblePanel/>
+          {params.chatId? <BubblePanel chatType = {params.chatType} chatId = {params.chatId}/>: null}
         </div>
       </div> 
     )
