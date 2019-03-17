@@ -210,7 +210,9 @@ class SessionItem extends Component {
                     </div>
                     <div className="session-inner">
                         <div className="name">{friend.name}</div>
-                        <div className="msg-preview" />
+                        <div className="msg-preview" >
+                          {friend.message? friend.message.value : null}
+                        </div>
                     </div>
                 </Link>
             </div>

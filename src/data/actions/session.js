@@ -27,3 +27,18 @@ export function getRosters() {
     })
   }
 }
+
+export function changeRosterWithMsg(msg){
+  return (dispatch, getState) => {
+    let name = msg.body ? msg.body.to :  msg.from;
+        let rosters = getState().session.rosters;
+        let newRosters = rosters.map((roster) => {
+            let newRoster = {...roster};
+            if (roster.name === name) {
+                newRoster.message = msg;
+            }
+            return newRoster;
+        })
+        dispatch(setRosters(newRosters));
+  }
+}
