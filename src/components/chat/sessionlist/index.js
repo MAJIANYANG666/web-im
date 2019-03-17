@@ -3,31 +3,51 @@ import Avator from "@component/common/avator";
 import { showDialog, closeDialog } from "@component/common/dialog";
 import { Link } from "react-router";
 import "./index.css";
-import {connect} from 'react-redux';
-import {setCurrentSession} from '@data/actions/session';
+import { connect } from "react-redux";
+import { setCurrentSession,getRosters } from "@data/actions/session";
 
+import eventEmitter from '@util/event';
+
+
+@connect(
+  state => ({
+    rosters: state.session.rosters
+  }),
+  {
+    getRosters
+  }
+)
 export default class sessionList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            friendList: [],
+            // friendList: [],
             showPanel: false
         };
     }
     componentWillMount() {
-        sdk.conn.listen({
-            onOpened: message => {
-                //连接成功回调
-                this.getRosters();
-            },
-            onRoster: message => {
-                this.getRosters();
-            },
-            onPresence: message => {
-                this.handlePresence(message);
-            }
-        });
+        // sdk.conn.listen({
+        //     onOpened: message => {
+        //         //连接成功回调
+        //         this.getRosters();
+        //     },
+        //     onTextMessage: (message) =>{
+
+        //     },
+        //     onRoster: message => {
+        //         this.getRosters();
+        //     },
+        //     onPresence: message => {
+        //         this.handlePresence(message);
+        //     }
+        // });
+        eventEmitter.on('presence',this.handlePresence)
     }
+    
+    componentWillUnmount() {
+      eventEmitter.removeListener('presence',this.handlePresence)
+    }
+
     handlePresence = message => {
         //对方收到请求加为好友
         if (message.type === "subscribe") {
@@ -88,36 +108,40 @@ export default class sessionList extends Component {
         // });
         closeDialog();
     };
-    getRosters = () => {
-        sdk.conn.getRoster({
-            success: rosters => {
-                rosters = rosters.filter(roster => {
-                    return (
-                        roster.subscription === "both" ||
-                        roster.subscription === "to"
-                    );
-                });
+    // getRosters = () => {
+    //     sdk.conn.getRoster({
+    //         success: rosters => {
+    //             rosters = rosters.filter(roster => {
+    //                 return (
+    //                     roster.subscription === "both" ||
+    //                     roster.subscription === "to"
+    //                 );
+    //             });
 
-                this.setState({
-                    friendList: rosters
-                });
-            },
-            error: e => {
-                alert(e);
-            }
-        });
-    };
+    //             this.setState({
+    //                 friendList: rosters
+    //             });
+    //         },
+    //         error: e => {
+    //             alert(e);
+    //         }
+    //     });
+    // };
     render() {
-        let { friendList, showPanel } = this.state;
+        let { showPanel } = this.state;
         let message = this.subscribeMessage;
-        let {chatId} = this.props
+        let { chatId,rosters:friendList } = this.props;
         return (
             <div className="sessionlist">
                 {friendList.length
                     ? friendList.map(friend => {
-                      let isSelected = friend.name ===chatId;
+                          let isSelected = friend.name === chatId;
                           return (
-                              <SessionItem friend={friend} key={friend.name} isSelected = {isSelected}/>
+                              <SessionItem
+                                  friend={friend}
+                                  key={friend.name}
+                                  isSelected={isSelected}
+                              />
                           );
                       })
                     : null}
@@ -152,35 +176,44 @@ export default class sessionList extends Component {
 }
 
 @connect(
-  (state) => ({
-
-  }),
-  {
-    setCurrentSession
-  }
+    state => ({}),
+    {
+        setCurrentSession
+    }
 )
-
 class SessionItem extends Component {
-  itemClick = () =>{
-    let {setCurrentSession,friend} = this.props;
-    setCurrentSession(friend)
-  }
+    itemClick = () => {
+        let { setCurrentSession, friend } = this.props;
+        setCurrentSession(friend);
+    };
 
     render() {
-        let { friend, isSelected} = this.props;
-        console.log(111)
-        console.log(friend)
-        let url = `chat/single/${friend.name}`
-        return <div className={ isSelected ? "session-item-outer selected":"session-item-outer"}>
-        <Link to={url} className="session-item" onClick={this.itemClick}>
-          <div className="ctn-avator">
-            <Avator/>
-          </div>
-          <div className="session-inner">
-            <div className="name">{friend.name}</div>
-            <div className="msg-preview"></div>
-          </div>    
-        </Link>  
-        </div>;
+        let { friend, isSelected } = this.props;
+        console.log(111);
+        console.log(friend);
+        let url = `chat/single/${friend.name}`;
+        return (
+            <div
+                className={
+                    isSelected
+                        ? "session-item-outer selected"
+                        : "session-item-outer"
+                }
+            >
+                <Link
+                    to={url}
+                    className="session-item"
+                    onClick={this.itemClick}
+                >
+                    <div className="ctn-avator">
+                        <Avator />
+                    </div>
+                    <div className="session-inner">
+                        <div className="name">{friend.name}</div>
+                        <div className="msg-preview" />
+                    </div>
+                </Link>
+            </div>
+        );
     }
 }

@@ -1,6 +1,33 @@
 import {GET_MSGS, SEND_TEXT_MSG, CHANGE_MSG_STATUS,createAction} from './actiontypes'
 import {getToken} from '@utils/token'
+import { getRosters } from './session';
+import eventEmitter from '@util/event';
+
+
 export let addTextMessage = createAction(SEND_TEXT_MSG, 'to', 'msg');
+
+
+export function init() {
+  return (dispatch, getState)=>{
+  sdk.conn.listen({
+            onOpened: message => {
+                //连接成功回调
+                dispatch(getRosters());
+            },
+            onTextMessage: (message) =>{
+              message.value = message.value || message.data
+              dispatch(addTextMessage(message.from,message))
+            },
+            onRoster: message => {
+              dispatch(getRosters());
+            },
+            onPresence: message => {
+                // this.handlePresence(message);
+                eventEmitter.emit('presence',message)
+            }
+        });
+  }
+}
 
 export function sendTextMessage(to, text, chatType) {
   return (dispatch, getState)=>{

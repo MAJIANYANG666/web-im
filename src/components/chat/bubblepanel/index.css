@@ -23,11 +23,18 @@
       
       .ctn-msglist-inner {
           .message-item {
-              display: flex;
-              padding: 10px;
-              box-sizing: border-box;
+              overflow:auto;
+              .message-item-outer{
+                  display: flex;
+                  padding: 10px;
+                  box-sizing: border-box;
+              }
+              
               &.me{
-                  float:right;
+                  .message-item-outer{
+                      float:right;
+                  }
+                  
                   .avator-outer {
                       margin-left: 15px;
                       margin-right:0;
