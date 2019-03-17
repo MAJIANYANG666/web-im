@@ -94,7 +94,7 @@ module.exports = {
       '@component': __dirname + '/../src/components',
       '@history': __dirname + '/../src/history',
       '@decorator': __dirname + '/../src/decorators',
-      '@util': __dirname + '/../src/utils',
+      '@utils': __dirname + '/../src/utils',
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',

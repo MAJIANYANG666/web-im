@@ -87,7 +87,7 @@ class BubbleItem extends Component {
         //throw new Error('error');
     //}, 0)
 
-    //throw new Error('error');
+    // throw new Error('error');
 }
   render() {
     let {msg} = this.props;
