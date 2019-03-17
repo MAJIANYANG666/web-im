@@ -1,8 +1,8 @@
-import {SET_CURRENT_SESSION, createAction} from './actiontypes';
+import {SET_CURRENT_SESSION, createAction,SET_ROSTERS} from './actiontypes';
 
 
 export let setCurrentSession = createAction(SET_CURRENT_SESSION,'session')
-export let setRosters = createAction(SET_ROSTERS. 'rosters')
+export let setRosters = createAction(SET_ROSTERS,'rosters')
 
 
 

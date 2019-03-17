@@ -38,7 +38,6 @@ export default class BubblePanel extends Component {
     render() {
         let { currentSession } = this.props;
 
-        debugger
         let msgs = this.getMsgs();
         console.log(msgs.length)
         return (
@@ -92,7 +91,7 @@ class BubbleItem extends Component {
 }
   render() {
     let {msg} = this.props;
-    let fromMe = ms.fromMe;
+    let fromMe = msg.fromMe;
 
     let messageItemClassName = classnames({
       'message-item':true,
@@ -105,7 +104,7 @@ class BubbleItem extends Component {
       <div className = {messageItemClassName}>
        <div className="message-item-outer">
         {!fromMe ? <div className="avator-outer">
-          <Avator/>>
+          <Avator/>
         </div> : null}
         <div className="message-item-inner">
           <div className="name">

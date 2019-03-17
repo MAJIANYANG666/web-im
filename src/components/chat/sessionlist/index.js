@@ -6,7 +6,7 @@ import "./index.css";
 import { connect } from "react-redux";
 import { setCurrentSession,getRosters } from "@data/actions/session";
 
-import eventEmitter from '@util/event';
+import eventEmitter from '@utils/event';
 import shallowequal from 'shallowequal';
 
 @connect(

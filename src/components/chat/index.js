@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 
 import './index.css'
 
-import {init} from 'data/actions/message'
+import {init} from '@data/actions/message'
 
 @connect(()=>({
 

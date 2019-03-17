@@ -1,7 +1,7 @@
 import {GET_MSGS, SEND_TEXT_MSG, CHANGE_MSG_STATUS,createAction} from './actiontypes'
 import {getToken} from '@utils/token'
 import { getRosters,changeRosterWithMsg} from './session';
-import eventEmitter from '@util/event';
+import eventEmitter from '@utils/event';
 
 
 export let addTextMessage = createAction(SEND_TEXT_MSG, 'to', 'msg');
