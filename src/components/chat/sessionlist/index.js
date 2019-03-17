@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { setCurrentSession,getRosters } from "@data/actions/session";
 
 import eventEmitter from '@util/event';
-
+import shallowequal from 'shallowequal';
 
 @connect(
   state => ({
@@ -182,6 +182,14 @@ export default class sessionList extends Component {
     }
 )
 class SessionItem extends Component {
+      shouldComponentUpdate(nextProps, nextState) {
+        return !shallowequal(nextProps.friend, this.props.friend) 
+            || nextProps.isSelected !== this.props.isSelected;
+    }
+    shouldComponentUpdate(nextProps, nextState) {
+      return !shallowequal(nextProps.friend, this.props.friend)
+      || nextProps.isSelected !== this.props.isSelected;
+    }
     itemClick = () => {
         let { setCurrentSession, friend } = this.props;
         setCurrentSession(friend);
