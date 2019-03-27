@@ -1,6 +1,6 @@
 # web-im
 
-[预览]()
+[预览](https://majianyang666.github.io/web-im/build/index.html)
 
 聊天web-app
 
