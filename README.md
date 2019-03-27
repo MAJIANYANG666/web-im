@@ -6,7 +6,7 @@
 
 ## 技术栈
 
-react react-router react-redux 
+react react-router react-redux eventemit3 
 
 ## 功能
 
